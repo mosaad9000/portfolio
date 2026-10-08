@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abdelrahman Aldorgham — Telecommunications & Electronics Engineer</title>
+<meta name="description" content="Portfolio of Abdelrahman Aldorgham: telecommunications and electronics engineer, and AI automation freelancer.">
+<meta property="og:title" content="Abdelrahman Aldorgham">
+<meta property="og:description" content="Telecommunications & Electronics Engineer and AI automation freelancer.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Design tokens */
+  :root {
+    --background: #FAFAF9;
+    --surface: #FFFFFF;
+    --text: #18181B;
+    --text-secondary: #71717A;
+    --accent: #2563EB;
+    --border: #E4E4E7;
+    --radius: 6px;
+    --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --background: #131315; --surface: #1B1B1E; --text: #F4F4F5;
+      --text-secondary: #A1A1AA; --accent: #6B9BFF; --border: #2E2E33;
+    }
+  }
+  :root[data-theme="dark"] {
+    --background: #131315; --surface: #1B1B1E; --text: #F4F4F5;
+    --text-secondary: #A1A1AA; --accent: #6B9BFF; --border: #2E2E33;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(72px + env(safe-area-inset-top, 0px)); }
+  body {
+    margin: 0; background: var(--background); color: var(--text);
+    font-family: var(--font); font-size: 16px; line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  p { margin: 0 0 1em; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .muted { color: var(--text-secondary); }
+
+  a, button { transition: color 180ms ease, border-color 180ms ease, transform 180ms ease, background-color 180ms ease; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+  .link { border-bottom: 1px solid var(--border); }
+  .link:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* Header */
+  header {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+    background: var(--background); border-bottom: 1px solid var(--border);
+  }
+  nav { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+  .brand { font-weight: 600; letter-spacing: -0.01em; }
+  nav ul { display: flex; gap: 24px; font-size: 15px; color: var(--text-secondary); }
+  nav ul a:hover { color: var(--text); }
+  .ext::after { content: " ↗"; font-size: 0.85em; }
+
+  /* Sections */
+  section { padding: 88px 0 0; }
+  h1, h2, h3 { font-weight: 500; letter-spacing: -0.015em; line-height: 1.25; margin: 0; }
+  h1 { font-size: clamp(1.9rem, 4vw, 2.4rem); }
+  h2 { font-size: 1.35rem; margin-bottom: 28px; }
+  h3 { font-size: 1.05rem; font-weight: 600; }
+
+  /* Hero */
+  .hero { padding-top: 96px; }
+  .hero .role { margin: 10px 0 20px; font-size: 1.15rem; color: var(--text-secondary); }
+  .hero .lead { max-width: 56ch; }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+  .btn {
+    display: inline-block; padding: 9px 16px; font-size: 15px; font-weight: 500;
+    border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface);
+  }
+  .btn:hover { border-color: var(--text); }
+  .btn.primary { background: var(--text); color: var(--background); border-color: var(--text); }
+  .btn.primary:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  /* Two-column rows (label left, content right) */
+  .row { display: grid; grid-template-columns: 200px 1fr; gap: 24px; }
+  .row > h2 { margin: 0; }
+  .prose { max-width: 62ch; }
+
+  /* Skills */
+  .skills { display: grid; gap: 14px; }
+  .skills div { display: grid; grid-template-columns: 150px 1fr; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+  .skills dt { color: var(--text-secondary); font-size: 15px; }
+  .skills dd { margin: 0; }
+
+  /* Projects */
+  .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .projects li:first-child { grid-column: 1 / -1; }
+  .project {
+    display: flex; flex-direction: column; height: 100%;
+    padding: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  }
+  .project:hover { border-color: var(--text-secondary); }
+  .project p { color: var(--text-secondary); font-size: 15px; }
+  .project .stack { margin-top: auto; font-size: 13.5px; color: var(--text-secondary); }
+  .project .more { margin-top: 14px; font-size: 15px; font-weight: 500; color: var(--accent); }
+  .project:hover .more { transform: translateX(3px); }
+  .project h3 { margin-bottom: 10px; }
+
+  /* Experience */
+  .timeline li { padding: 0 0 28px 20px; border-left: 1px solid var(--border); position: relative; }
+  .timeline li:last-child { padding-bottom: 0; }
+  .timeline li::before {
+    content: ""; position: absolute; left: -4px; top: 9px; width: 7px; height: 7px;
+    border-radius: 50%; background: var(--accent);
+  }
+  .timeline .meta { font-size: 14px; color: var(--text-secondary); }
+
+  /* Contact */
+  .contact-list { display: grid; gap: 6px; margin-top: 8px; }
+  .contact-list a { display: inline-block; }
+
+  footer { margin-top: 112px; padding: 24px 0; border-top: 1px solid var(--border); font-size: 14px; color: var(--text-secondary); }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  footer a:hover { color: var(--text); }
+
+  /* Tablet */
+  @media (max-width: 860px) {
+    section { padding-top: 72px; }
+    .row { grid-template-columns: 1fr; gap: 0; }
+    .row > h2 { margin-bottom: 24px; }
+    .projects { grid-template-columns: 1fr; }
+  }
+  /* Mobile */
+  @media (max-width: 560px) {
+    .wrap { padding: 0 20px; }
+    nav ul { gap: 16px; font-size: 14px; }
+    nav ul li.hide-sm { display: none; }
+    .hero { padding-top: 64px; }
+    .skills div { grid-template-columns: 1fr; gap: 2px; }
+    .project { padding: 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap" aria-label="Main">
+    <a class="brand" href="#top">Abdelrahman Aldorgham</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li class="hide-sm"><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li class="hide-sm"><a class="ext" href="https://github.com/mosaad9000" rel="noopener">GitHub</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>Hi, I'm Abdelrahman.</h1>
+      <p class="role">Telecommunications &amp; Electronics Engineer · AI automation freelancer</p>
+      <p class="lead">I build practical systems, from communication networks to AI-powered automations, and I care most about getting ideas to the point where they actually run.</p>
+      <div class="actions">
+        <a class="btn primary" href="#projects">View projects</a>
+        <a class="btn ext" href="https://github.com/mosaad9000" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap row">
+      <h2>About</h2>
+      <div class="prose">
+        <p>I studied electronics and communications engineering, then spent six months working in networking before moving into AI automation, which I've now done as a freelancer for a year.</p>
+        <p>My work sits between the two: the networking side taught me how systems talk to each other, and the automation side is about making them do useful work without someone watching. Lately that means local LLMs, API integrations, and workflow tools like n8n.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2>Projects</h2>
+      <ul class="projects">
+        <li>
+          <!-- TODO: replace with the exact repository URL -->
+          <a class="project" href="https://github.com/mosaad9000" rel="noopener">
+            <h3>AI Digital Twin</h3>
+            <p>A conversational AI that represents a real person. It answers questions about education, skills, projects and background in a natural voice, using custom prompting, conversation history and function calling, served through a Gradio chat interface.</p>
+            <div class="stack">Python · Google Gemini API · Gradio · Prompt engineering · Function calling</div>
+            <span class="more">GitHub ↗</span>
+          </a>
+        </li>
+        <li>
+          <!-- TODO: replace with the exact repository URL -->
+          <a class="project" href="https://github.com/mosaad9000" rel="noopener">
+            <h3>AI Research Assistant</h3>
+            <p>A multi-tool research agent running on a local LLM. Give it a topic and it generates research questions, searches the web, scrapes and summarizes sources, compares them, handles follow-ups, and writes a structured report in one pipeline.</p>
+            <div class="stack">Python · Ollama · Gradio</div>
+            <span class="more">GitHub ↗</span>
+          </a>
+        </li>
+        <li>
+          <!-- TODO: replace with the exact repository URL -->
+          <a class="project" href="https://github.com/mosaad9000" rel="noopener">
+            <h3>Gmail AI Summarizer</h3>
+            <p>Pulls recent emails through the Gmail API, extracts their content, and summarizes each with a local Phi-3 model via Ollama. Built to cut down email reading time while keeping all AI processing on the local machine.</p>
+            <div class="stack">Python · Gmail API · Ollama · Phi-3</div>
+            <span class="more">GitHub ↗</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap row">
+      <h2>Skills</h2>
+      <dl class="skills" style="margin:0">
+        <div><dt>AI &amp; automation</dt><dd>n8n · Claude · Ollama · Hugging Face · Prompt engineering · Python</dd></div>
+        <div><dt>Networking</dt><dd>GNS3 · Packet Tracer · Wireshark</dd></div>
+        <div><dt>Security &amp; systems</dt><dd>Kali Linux · VMware</dd></div>
+        <div><dt>Tools</dt><dd>Git · GitHub</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap row">
+      <h2>Experience</h2>
+      <ul class="timeline">
+        <li>
+          <h3>AI Automation Freelancer</h3>
+          <div class="meta">Self-employed · 1 year</div>
+          <p class="muted" style="margin:6px 0 0">Building AI-powered automations and workflows for clients.</p>
+        </li>
+        <li>
+          <h3>Networking</h3>
+          <div class="meta">6 months</div>
+          <!-- TODO: add organization name and role title -->
+        </li>
+        <li>
+          <h3>B.Eng., Electronics and Communications</h3>
+          <div class="meta">Bachelor of Engineering</div>
+          <!-- TODO: add university name and graduation year -->
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap row">
+      <h2>Contact</h2>
+      <div class="prose">
+        <p>I'm open to freelance automation work, collaborations, and conversations about networking or AI tooling. Email is the quickest way to reach me.</p>
+        <ul class="contact-list">
+          <li><a class="link" href="mailto:Abdelrahman.mosaad.work@gmail.com">Abdelrahman.mosaad.work@gmail.com</a></li>
+          <li><a class="link ext" href="https://github.com/mosaad9000" rel="noopener">GitHub</a></li>
+          <li><a class="link ext" href="https://www.linkedin.com/in/abdelrahman-aldorgham" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Abdelrahman Aldorgham</span>
+    <span><a href="https://github.com/mosaad9000" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/abdelrahman-aldorgham" rel="noopener">LinkedIn</a> · <a href="mailto:Abdelrahman.mosaad.work@gmail.com">Email</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
